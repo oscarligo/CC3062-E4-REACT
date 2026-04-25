@@ -1,0 +1,4 @@
+services:
+  movies-app:
+    build:
+      context: .
