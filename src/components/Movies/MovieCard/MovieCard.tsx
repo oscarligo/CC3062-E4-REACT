@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import { type Movie } from '../../../types/movie';
 import './MovieCard.css';
 
@@ -31,3 +32,13 @@ export default function MovieCard({ movie }: MovieCardProps) {
         </Link>
     );
 }
+
+MovieCard.propTypes = {
+    movie: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        poster_path: PropTypes.string,
+        vote_average: PropTypes.number.isRequired,
+        release_date: PropTypes.string.isRequired,
+    }).isRequired,
+};

@@ -1,4 +1,5 @@
 # App de Películas (React + TypeScript + Vite)
+#
 
 Esta es una aplicación web para explorar películas, ver detalles y consultar su calificación. Desarrollada con **React**, **TypeScript** y empaquetada con **Vite**, consume los datos directamente de la API de TMDB (The Movie Database).
 
@@ -9,7 +10,11 @@ El propósito de este proyecto es demostrar la construcción de una SPA   utiliz
 - **Exploración de Películas**: Listado de películas populares y mejor calificadas.
 - **Detalle de Película**: Vistas dedicadas para cada película con información de rating, pósters y tráilers integrados.
 - **Modo Oscuro/Claro**: Soporte para temas integrado a través de React Context.
-- **Manejo de asincronía**: Custom hooks para realizar llamadas a la API limpias y desacopladas (`useFetchMovies`, `useFetchMovieDetail`).
+
+- **Componentes validados con PropTypes**: Se han definido PropTypes para asegurar la correcta transferencia de datos en los siguientes componentes:
+  - `MovieCard`: Componente principal para mostrar la información básica de una película. Valida la estructura del objeto `movie` (requiere `id`, `title`, `vote_average`, `release_date`).
+  - `LoadingSpinner`: Componente reutilizable para indicar estados de carga. Acepta y valida un `message` de tipo string opcional.
+  - `ErrorMessage`: Componente para mostrar errores a lo largo de la aplicación. Acepta y valida un mensaje de `error` y una función opcional `onRetry`.
 
 ## Organización del proyecto
 

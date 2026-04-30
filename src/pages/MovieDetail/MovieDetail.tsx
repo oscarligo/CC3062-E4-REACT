@@ -1,13 +1,15 @@
 import { useParams } from 'react-router';
 import { useFetchMovieDetail } from '../../hooks/useFetchMovieDetail';
+import LoadingSpinner from '../../components/common/LoadingSpinner/LoadingSpinner';
+import ErrorMessage from '../../components/common/ErrorMessage/ErrorMessage';
 import './MovieDetail.css';
 
 export default function MovieDetail() {
     const { id } = useParams();
     const { movie, loading } = useFetchMovieDetail(id);
 
-    if (loading) return <div className="loader">Cargando detalles...</div>;
-    if (!movie) return <p>Película no encontrada.</p>;
+    if (loading) return <LoadingSpinner message="Cargando detalles..." />;
+    if (!movie) return <ErrorMessage error="Película no encontrada." />;
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
     const trailerUrl = import .meta.env.VITE_MOVIE_TRAILER_BASE_URL + movie.id;

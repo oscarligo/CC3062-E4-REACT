@@ -1,5 +1,7 @@
 import MovieCard from '../../components/Movies/MovieCard/MovieCard';
 import { useFetchMovies } from '../../hooks/useFetchMovies';
+import LoadingSpinner from '../../components/common/LoadingSpinner/LoadingSpinner';
+import ErrorMessage from '../../components/common/ErrorMessage/ErrorMessage';
 import './TopRatedMovies.css';
 
 
@@ -7,8 +9,8 @@ import './TopRatedMovies.css';
 export default function TopRatedMovies(){
     const { data: movies, loading, error } = useFetchMovies('/movie/top_rated');
 
-    if (loading) return <p>Cargando películas...</p>;
-    if (error) return <p>Hubo un error: {error}</p>;
+    if (loading) return <LoadingSpinner message="Cargando películas..." />;
+    if (error) return <ErrorMessage error={error} />;
 
 return (
     <>
