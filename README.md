@@ -1,75 +1,56 @@
-# React + TypeScript + Vite
+# App de Películas (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una aplicación web para explorar películas, ver detalles y consultar su calificación. Desarrollada con **React**, **TypeScript** y empaquetada con **Vite**, consume los datos directamente de la API de TMDB (The Movie Database).
 
-Currently, two official plugins are available:
+## Propósito y contenido
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+El propósito de este proyecto es demostrar la construcción de una SPA   utilizando las mejores prácticas de React. La aplicación cuenta con las siguientes características:
 
-## React Compiler
+- **Exploración de Películas**: Listado de películas populares y mejor calificadas.
+- **Detalle de Película**: Vistas dedicadas para cada película con información de rating, pósters y tráilers integrados.
+- **Modo Oscuro/Claro**: Soporte para temas integrado a través de React Context.
+- **Manejo de asincronía**: Custom hooks para realizar llamadas a la API limpias y desacopladas (`useFetchMovies`, `useFetchMovieDetail`).
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Organización del proyecto
 
-Note: This will impact Vite dev & build performances.
 
-## Expanding the ESLint configuration
+El proyecto sigue una arquitectura modular y organizada por características dentro de la carpeta `src/`:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```text
+src/
+ ├── assets/        # Imágenes, iconos y recursos estáticos.
+ ├── components/    # Componentes UI reutilizables.
+ ├── context/       # Estados globales de React.
+ ├── hooks/         # Custom hooks para lógica de negoci.
+ ├── layouts/       # Estructuras principales de vista.
+ ├── pages/         # Vistas/Rutas de la aplicación.
+ └── types/         # Definiciones de tipos e interfaces de TypeScript.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```
+## Requisitos previos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Tener Docker y Docker Compose instalados.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Contar con una API Key de TMDB.
+
+- Copiar el archivo de variables de entorno de ejemplo y rellenarlo localmente
+
+## Ejecutar el proyecto
+
+El proyecto está configurado con Docker usando escenarios multicapa (multi-stage) tanto para desarrollo como para producción.
+
+### Modo de desarrollo
+
+Por defecto, el servidor se levantará en modo de desarrollo al utilizar:
+
+```
+docker-compose up --build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Modo de producción
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Si se desea levantar un contenedor más ligero para producción, el comando es: 
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+docker-compose -f docker-compose.yml -f docker-compose.production.yml up --build -d
 ```
