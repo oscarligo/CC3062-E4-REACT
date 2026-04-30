@@ -1,13 +1,15 @@
 import  "./NavBar.css";
 import { Link } from "react-router";
 import Sidebar from "../SideBar/SideBar";
+import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 export default function Navbar() {
     return (
         <nav className="navbar">
             <Sidebar />
-            
+        
+
             <Link to="/" className="logo">
-                UV<span>Movies</span>
+                sadasd<span>asdasda</span>
             </Link>
 
             <input 
@@ -15,6 +17,8 @@ export default function Navbar() {
                 className="searchBar" 
                 placeholder="Buscar..." 
             />
+
+            <ThemeToggle />
 
             <div className="languageSelector">
                 <select>

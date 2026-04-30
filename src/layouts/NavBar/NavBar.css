@@ -9,7 +9,7 @@
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid #ffffff;
-    flex-wrap: wrap; /* permite que bajen elementos */
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -20,11 +20,7 @@
     letter-spacing: -1px;
 }
 
-.logo:hover {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    padding: 0 4px;
-}
+
 
 .logo span {
     color: #ffffff;
