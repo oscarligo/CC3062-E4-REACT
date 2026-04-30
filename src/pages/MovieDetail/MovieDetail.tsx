@@ -10,10 +10,10 @@ export default function MovieDetail() {
     if (!movie) return <p>Película no encontrada.</p>;
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+    const trailerUrl = import .meta.env.VITE_MOVIE_TRAILER_BASE_URL + movie.id;
 
     return (
             <div className="detailPage">
-                {/* Fondo Hero */}
                 <div 
                     className="hero" 
                     style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), var(--background)), url(${backdropUrl})` }}
@@ -39,7 +39,6 @@ export default function MovieDetail() {
                     </div>
                 </div>
 
-                {/* Sinopsis y Datos */}
                 <div className="detailBody">
                     <section className="overview">
                     <h2>Sinopsis</h2>
@@ -47,12 +46,24 @@ export default function MovieDetail() {
                     </section>
                 </div>
 
-                <div className="VideoSection">
+                
+                {trailerUrl && (
+                        <div className="trailerContainer">
+                            <h2>Tráiler Oficial</h2>
+                            <div className="videoWrapper">
+                            <iframe 
+                                src={trailerUrl} 
+                                title="Movie Trailer"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowFullScreen
+                                loading="lazy"
+                            ></iframe>
+                            </div>
+                        </div>
+                )}
                     
                     
-                    
-                    
-                </div>
+                
             </div>          
     );
 }

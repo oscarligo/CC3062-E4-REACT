@@ -20,8 +20,7 @@ export default function Sidebar() {
             <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <nav className="nav">
                 <Link to="/" onClick={toggleMenu}>Inicio</Link>
-                <Link to="/movies" onClick={toggleMenu}>Películas</Link>
-                <Link to="/favorites" onClick={toggleMenu}>Favoritos</Link>
+                <Link to="/top-rated-movies" onClick={toggleMenu}>Mejores Calificadas</Link>
                 </nav>
             </aside>
         </>

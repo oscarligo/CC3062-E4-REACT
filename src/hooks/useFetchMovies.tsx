@@ -10,7 +10,6 @@ export function useFetchMovies(endpoint: string) {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        console.log(API_KEY)
         const fetchData = async () => {
         try {
             setLoading(true);
