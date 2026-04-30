@@ -9,7 +9,7 @@ export default function Navbar() {
         
 
             <Link to="/" className="logo">
-                sadasd<span>asdasda</span>
+                Peli<span>culas</span>
             </Link>
 
             <input 
